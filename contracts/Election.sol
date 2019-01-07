@@ -1,50 +1,37 @@
-pragma solidity ^0.4.2;
+pragma solidity ^0.4.22;
 
 contract Election {
     // Model a Candidate
     struct Candidate {
         uint id;
         string name;
+        string vPos;
+        string gender;
+        string PoS;
+        string manifesto;
         uint voteCount;
     }
 
-    // Store accounts that have voted
-    mapping(address => bool) public voters;
     // Store Candidates
     // Fetch Candidate
     mapping(uint => Candidate) public candidates;
     // Store Candidates Count
     uint public candidatesCount;
 
-    // voted event
-    event votedEvent (
-        uint indexed _candidateId
-    );
 
     constructor () public {
-        addCandidate("Candidate 1");
-        addCandidate("Candidate 2");
+        addCandidate("Samuel Kori", "President", "Male", "Computer Science", "I am A good boy and I need your vote");
+        addCandidate("Cole Baidoe", "President", "Male", "Law", "I am A bad boy and I need your vote");    
     }
 
-    function addCandidate (string _name) private {
+    function addCandidate (string memory _name, string memory _vPos, string memory _gender, string memory _PoS, string memory _manifesto) public {
         candidatesCount ++;
-        candidates[candidatesCount] = Candidate(candidatesCount, _name, 0);
+        candidates[candidatesCount] = Candidate(candidatesCount, _name, _vPos, _gender, _PoS, _manifesto, 0);
     }
-
-    function vote (uint _candidateId) public {
-        // require that they haven't voted before
-        require(!voters[msg.sender]);
-
-        // require a valid candidate
-        require(_candidateId > 0 && _candidateId <= candidatesCount);
-
-        // record that voter has voted
-        voters[msg.sender] = true;
-
+    
+    function incrementVoteCount(uint _candidateId) public{
         // update candidate vote Count
         candidates[_candidateId].voteCount ++;
-
-        // trigger voted event
-        emit votedEvent(_candidateId);
     }
+
 }

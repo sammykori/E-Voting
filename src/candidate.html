@@ -35,7 +35,7 @@
             </div>
             <div class="sidebar-user"><img src="./images/users/avatar-6.jpg" alt="user" class="rounded-circle img-thumbnail mb-1">
                 <h6 class="">Mr. Michael Hill</h6>
-                <p class="online-icon text-dark"><i class="mdi mdi-record text-success"></i>0x2935...64</p>
+                <p class="online-icon text-dark" id="accountAddress"><i class="mdi mdi-record text-success"></i></p>
                 <ul class="list-unstyled list-inline mb-0 mt-2">
                     <li class="list-inline-item"><a href="#" class="" data-toggle="tooltip" data-placement="top" title="Profile"><i
                                 class="dripicons-user text-purple"></i></a></li>
@@ -149,7 +149,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="page-title-box">
-                                    <div class="btn-group float-right">
+                                    <div class="btn-group float-right" id="content">
                                         <button
                                             type="button" class="btn btn-primary waves-effect waves-light"
                                             data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-lg">Add Candidate
@@ -170,50 +170,40 @@
                                                                 <div class="card-body">
                                                                     <div class="row">
                                                                         <div class="col-xl-12">
-                                                                            <div class="form-group row"><label for="example-text-input" class="col-sm-2 col-form-label">Election Name</label>
-                                                                                <div class="col-sm-10"><input class="form-control" type="text"
-                                                                                        placeholder="LUG SRC Elections" id="example-text-input"></div>
-                                                                            </div>
-                                                                            <div class="form-group row">
-                                                                                <label for="example-text-input" class="col-sm-2 col-form-label">Election Description</label>
-                                                                                <div class="col-sm-10">
-                                                                                    <textarea id="textarea"
-                                                                                    class="form-control" maxlength="225" rows="3" placeholder="This Election is to contest ..."></textarea>
+                                                                            <form onSubmit="App.addCandidate(); return false;">
+                                                                                <div class="form-group row"><label for="example-text-input" class="col-sm-2 col-form-label">Candidate Name</label>
+                                                                                    <div class="col-sm-10"><input class="form-control" type="text"
+                                                                                            placeholder="Cole Baidoe" id="candidateName"></div>
                                                                                 </div>
-                                                                            </div>
-                                                                            <div class="form-group row"><label for="example-text-input" class="col-sm-2 col-form-label">Election Institution</label>
-                                                                                <div class="col-sm-10"><input class="form-control" type="text"
-                                                                                        placeholder="Lancaster University Ghana" id="example-text-input"></div>
-                                                                            </div>
-                                                                            <div class="form-group row">
-                                                                                <label for="example-text-input" class="col-sm-2 col-form-label">Date Range</label>
-                                                                                <div class="col-sm-10">
-                                                                                    <div class="input-daterange input-group" id="date-range"><input
-                                                                                            type="text" class="form-control" name="start"
-                                                                                            placeholder="Start Date"> <input type="text" class="form-control"
-                                                                                            name="end" placeholder="End Date"></div>
+                                                                                <div class="form-group row"><label for="example-text-input" class="col-sm-2 col-form-label">Vying Position</label>
+                                                                                    <div class="col-sm-10"><input class="form-control" type="text"
+                                                                                            placeholder="SRC President" id="vPos"></div>
                                                                                 </div>
-                                                                            </div>
-                                                                            <div class="form-group row">
-                                                                                <label for="example-text-input" class="col-sm-2 col-form-label">Starting Time</label>
-                                                                                <div class="col-sm-10">
-                                                                                    <div class="input-group clockpicker" data-placement="top" data-align="top"
-                                                                                    data-autoclose="true"><input type="text" class="form-control" value="01:35">
-                                                                                    <div class="input-group-append"><span class="input-group-text"><i
-                                                                                            class="far fa-clock"></i></span></div>
+                                                                                <div class="form-group row"><label class="col-sm-2 col-form-label">Gender</label>
+                                                                                    <div class="col-sm-10"><select class="custom-select" id="gender">
+                                                                                            <option selected="selected">Select</option>
+                                                                                            <option value="Male">Male</option>
+                                                                                            <option value="Female">Female</option>
+                                                                                        </select></div>
+                                                                                </div>
+                                                                                <div class="form-group row"><label class="col-sm-2 col-form-label">Programme of Study</label>
+                                                                                    <div class="col-sm-10"><select class="custom-select" id="Pos">
+                                                                                            <option selected="selected">Open this select menu</option>
+                                                                                            <option value="1">Computer Science</option>
+                                                                                            <option value="2">Law</option>
+                                                                                            <option value="3">Business</option>
+                                                                                        </select></div>
+                                                                                </div>
+                                                                                <div class="form-group row">
+                                                                                    <label for="example-text-input" class="col-sm-2 col-form-label">Manifesto</label>
+                                                                                    <div class="col-sm-10">
+                                                                                        <p class="text-muted mb-3 font-13">A short description about yourself and convincing statement of what you have to offer</p><textarea
+                                                                                            class="form-control" maxlength="225" rows="3" placeholder="This textarea has a limit of 225 chars." id="Manifesto"></textarea>
                                                                                     </div>
                                                                                 </div>
-                                                                            </div>
-                                                                            <div class="form-group row">
-                                                                                <label for="example-text-input" class="col-sm-2 col-form-label">Ending Time</label>
-                                                                                <div class="col-sm-10">
-                                                                                    <div class="input-group clockpicker" data-placement="top" data-align="top"
-                                                                                    data-autoclose="true"><input type="text" class="form-control" value="01:35">
-                                                                                    <div class="input-group-append"><span class="input-group-text"><i
-                                                                                            class="far fa-clock"></i></span></div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
+                                                                                <button type="button"
+                                                                                    class="btn btn-primary waves-effect waves-light">Save</button>
+                                                                            </form>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -223,7 +213,7 @@
                                                 </div>
                                                 <div class="modal-footer"><button type="button" class="btn btn-secondary waves-effect"
                                                     data-dismiss="modal">Cancel</button> <button type="button"
-                                                    class="btn btn-primary waves-effect waves-light">Save</button></div>
+                                                    class="btn btn-primary waves-effect waves-light" onclick="App.addCandidate()">Save</button></div>
                                             </div><!-- /.modal-content -->
                                         </div><!-- /.modal-dialog -->
                                     </div><!-- /.modal -->
@@ -231,7 +221,10 @@
                                 </div>
                             </div>
                         </div><!-- end page title end breadcrumb -->
-                        <div class="row">
+                        <div class="row" id="loader">
+                            <p class="text-center">Loading...</p>
+                        </div>
+                        <div class="row" id="content">
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body">
@@ -240,18 +233,13 @@
                                             <thead>
                                                 <tr>
                                                     <th>No</th>
-                                                    <th>Firstname</th>
-                                                    <th>Lastname</th>
-                                                    <th>Email</th>
+                                                    <th>Name</th>
+                                                    <th>Gender</th>
+                                                    <th>Programme of Study</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>John</td>
-                                                    <td>Doe</td>
-                                                    <td>john@example.com</td>
-                                                </tr>
+                                            <tbody id="candidatesResults">
+                                                
                                             </tbody>
                                         </table>
                                     </div>
@@ -279,6 +267,9 @@
     <script src="./js/jquery.scrollTo.min.js"></script>
     <script src="./pages/modal-animation.js"></script><!-- App js -->
     <script src="./js/dapp.js"></script>
+    <script src="./js/app.js"></script>
+    <script src="./js/web3.min.js"></script>
+    <script src="./js/truffle-contract.js"></script>
 </body>
 <!-- Mirrored from mannatthemes.com/zoogler/vertical/pages-blank.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 04 Dec 2018 18:37:23 GMT -->
 
