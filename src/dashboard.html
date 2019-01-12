@@ -33,8 +33,8 @@
                 </div>
             </div>
             <div class="sidebar-user"><img src="./images/users/avatar-6.jpg" alt="user" class="rounded-circle img-thumbnail mb-1">
-                <h6 id="test" class="">Mr. Michael Hill</h6>
-                <p class="online-icon text-dark"><i class="mdi mdi-record text-success"></i>0x2935...64</p>
+                <h6 id="test" class=""></h6>
+                <p class="online-icon text-dark" id="accountAddress"><i class="mdi mdi-record text-success"></i></p>
                 <ul class="list-unstyled list-inline mb-0 mt-2">
                     <li class="list-inline-item"><a href="#" class="" data-toggle="tooltip" data-placement="top" title="Profile"><i
                                 class="dripicons-user text-purple"></i></a></li>
@@ -168,8 +168,8 @@
                                                     <div class="row">
                                                         <div class="col-2 align-self-center"><i class="fas fa-tasks text-gradient-success"></i></div>
                                                         <div class="col-10 text-right">
-                                                            <h5 class="mt-0 mb-1">190</h5>
-                                                            <p class="mb-0 font-12 text-muted">Active Tasks</p>
+                                                            <h5 class="mt-0 mb-1" id="candy"></h5>
+                                                            <p class="mb-0 font-12 text-muted">Candidates</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -183,8 +183,8 @@
                                                     <div class="row">
                                                         <div class="col-2 align-self-center"><i class="far fa-gem text-gradient-danger"></i></div>
                                                         <div class="col-10 text-right">
-                                                            <h5 class="mt-0 mb-1">62</h5>
-                                                            <p class="mb-0 font-12 text-muted">Project</p>
+                                                            <h5 class="mt-0 mb-1">6</h5>
+                                                            <p class="mb-0 font-12 text-muted">Ballots</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -198,8 +198,8 @@
                                                     <div class="row">
                                                         <div class="col-2 align-self-center"><i class="fas fa-users text-gradient-warning"></i></div>
                                                         <div class="col-10 text-right">
-                                                            <h5 class="mt-0 mb-1">14</h5>
-                                                            <p class="mb-0 font-12 text-muted">Teams</p>
+                                                            <h5 class="mt-0 mb-1" id="voted"></h5>
+                                                            <p class="mb-0 font-12 text-muted">Voted</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -213,8 +213,8 @@
                                                     <div class="row">
                                                         <div class="col-2 align-self-center"><i class="fas fa-database text-gradient-primary"></i></div>
                                                         <div class="col-10 text-right">
-                                                            <h5 class="mt-0 mb-1">$15562</h5>
-                                                            <p class="mb-0 font-12 text-muted">Budget</p>
+                                                            <h5 class="mt-0 mb-1" id="voters"></h5>
+                                                            <p class="mb-0 font-12 text-muted">Voters</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -298,86 +298,10 @@
                                                                 </div>
                                                             </div>
                                                         </td>
-                                                        <td class="border-top-0 text-right"><a href="#" class="btn btn-light btn-sm"><i
-                                                                    class="far fa-comments mr-2 text-success"></i>Chat</a></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="media"><img src="./images/users/avatar-3.jpg"
-                                                                    alt="" class="thumb-md rounded-circle">
-                                                                <div class="media-body ml-2">
-                                                                    <p class="mb-0">Tiger Nixon <span class="badge badge-soft-info">UK</span></p><span
-                                                                        class="font-12 text-muted">CEO of WhatsApp</span>
-                                                                </div>
-                                                            </div>
+                                                        <td class="border-top-0 text-right">
+                                                            <h5 class="mt-0 mb-1" id="candy">54</h5>
+                                                            <p class="mb-0 font-12 text-muted">votes</p>
                                                         </td>
-                                                        <td class="text-right"><a href="#" class="btn btn-light btn-sm"><i
-                                                                    class="far fa-comments mr-2 text-success"></i>Chat</a></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="media"><img src="./images/users/avatar-4.jpg"
-                                                                    alt="" class="thumb-md rounded-circle">
-                                                                <div class="media-body ml-2">
-                                                                    <p class="mb-0">Ashton Cox <span class="badge badge-soft-pink">USA</span></p><span
-                                                                        class="font-12 text-muted">founder of Google</span>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td class="text-right"><a href="#" class="btn btn-light btn-sm"><i
-                                                                    class="far fa-comments mr-2 text-success"></i>Chat</a></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="media"><img src="./images/users/avatar-5.jpg"
-                                                                    alt="" class="thumb-md rounded-circle">
-                                                                <div class="media-body ml-2">
-                                                                    <p class="mb-0">Cedric Kelly <span class="badge badge-soft-purple">Canada</span></p><span
-                                                                        class="font-12 text-muted">CEO of Paypal</span>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td class="text-right"><a href="#" class="btn btn-light btn-sm"><i
-                                                                    class="far fa-comments mr-2 text-success"></i>Chat</a></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="">
-                                                            <div class="media"><img src="./images/users/avatar-2.jpg"
-                                                                    alt="" class="thumb-md rounded-circle">
-                                                                <div class="media-body ml-2">
-                                                                    <p class="mb-0">Garry Pearson <span class="badge badge-soft-info">India</span></p><span
-                                                                        class="font-12 text-muted">CEO of facebook</span>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td class="text-right"><a href="#" class="btn btn-light btn-sm"><i
-                                                                    class="far fa-comments mr-2 text-success"></i>Chat</a></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="media"><img src="./images/users/avatar-4.jpg"
-                                                                    alt="" class="thumb-md rounded-circle">
-                                                                <div class="media-body ml-2">
-                                                                    <p class="mb-0">Ashton Cox <span class="badge badge-soft-pink">Africa</span></p><span
-                                                                        class="font-12 text-muted">founder of Google</span>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td class="text-right"><a href="#" class="btn btn-light btn-sm"><i
-                                                                    class="far fa-comments mr-2 text-success"></i>Chat</a></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="media"><img src="./images/users/avatar-1.jpg"
-                                                                    alt="" class="thumb-md rounded-circle">
-                                                                <div class="media-body ml-2">
-                                                                    <p class="mb-0">Roy Saunders <span class="badge badge-soft-success">USA</span></p><span
-                                                                        class="font-12 text-muted">Manager of Bank</span>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td class="text-right"><a href="#" class="btn btn-light btn-sm"><i
-                                                                    class="far fa-comments mr-2 text-success"></i>Chat</a></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -385,86 +309,72 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-4 col-lg-6">
-                                <div class="card">
-                                    <div class="card-body"><a href="#" class="btn btn-outline-success float-right">Withdraw
-                                            Monthly</a>
-                                        <h5 class="header-title mb-4 mt-0">Monthly Revenue</h5>
-                                        <h4 class="mb-4">$15,421.50</h4>
-                                        <p class="font-14 text-muted mb-4"><i class="mdi mdi-message-reply text-danger mr-2 font-18"></i>
-                                            $ 1500 when an unknown printer took a galley.</p><canvas id="bar-data"
-                                            height="132"></canvas>
-                                    </div>
-                                </div>
+                            <div class="col-xl-4">
                                 <div class="card">
                                     <div class="card-body">
-                                        <div class="d-sm-flex align-self-center"><img src="./images/widgets/code.svg"
-                                                alt="" class="" height="100">
-                                            <div class="media-body ml-3">
-                                                <h6>Code Confirmed</h6>
-                                                <p class="text-muted font-13">Contrary to popular belief, generators on
-                                                    Lorem Ipsum is not simply random text.</p><a href="#" class="btn btn-gradient-secondary">Confirm</a>
-                                            </div>
+                                        <div class="dropdown d-inline-block float-right"><a class="nav-link dropdown-toggle arrow-none"
+                                                id="dLabel5" data-toggle="dropdown" href="#" role="button"
+                                                aria-haspopup="false" aria-expanded="false"><i class="fas fa-ellipsis-v font-20 text-muted"></i></a>
+                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dLabel5"><a
+                                                    class="dropdown-item" href="#">New Messages</a> <a class="dropdown-item"
+                                                    href="#">Open Messages</a></div>
+                                        </div>
+                                        <h5 class="header-title pb-3 mt-0">New Clients</h5>
+                                        <div class="table-responsive boxscroll" style="overflow: hidden; outline: none;">
+                                            <table class="table mb-0">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="border-top-0">
+                                                            <div class="media"><img src="./images/users/avatar-2.jpg"
+                                                                    alt="" class="thumb-md rounded-circle">
+                                                                <div class="media-body ml-2">
+                                                                    <p class="mb-0">Roy Saunders <span class="badge badge-soft-danger">USA</span></p><span
+                                                                        class="font-12 text-muted">CEO of facebook</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="border-top-0 text-right">
+                                                            <h5 class="mt-0 mb-1" id="candy">54</h5>
+                                                            <p class="mb-0 font-12 text-muted">votes</p>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-4 col-lg-6">
-                                <div class="card timeline-card">
-                                    <div class="card-body p-0">
-                                        <div class="bg-gradient2 text-white text-center py-3 mb-4">
-                                            <p class="mb-0 font-18"><i class="mdi mdi-clock-outline font-20"></i> This
-                                                Week's Activity</p>
+                            <div class="col-xl-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="dropdown d-inline-block float-right"><a class="nav-link dropdown-toggle arrow-none"
+                                                id="dLabel5" data-toggle="dropdown" href="#" role="button"
+                                                aria-haspopup="false" aria-expanded="false"><i class="fas fa-ellipsis-v font-20 text-muted"></i></a>
+                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dLabel5"><a
+                                                    class="dropdown-item" href="#">New Messages</a> <a class="dropdown-item"
+                                                    href="#">Open Messages</a></div>
                                         </div>
-                                    </div>
-                                    <div class="card-body boxscroll">
-                                        <div class="timeline">
-                                            <div class="entry">
-                                                <div class="title">
-                                                    <h6>10/ Oct</h6>
-                                                </div>
-                                                <div class="body">
-                                                    <p>There are many variations of passages of Lorem Ipsum
-                                                        available.....<a href="#" class="text-primary"> Read More</a></p>
-                                                </div>
-                                            </div>
-                                            <div class="entry">
-                                                <div class="title">
-                                                    <h6>9/ Oct</h6>
-                                                </div>
-                                                <div class="body">
-                                                    <p>All the Lorem Ipsum generators on the predefined chunks as
-                                                        necessary.....<a href="#" class="text-primary"> Read More</a></p>
-                                                </div>
-                                            </div>
-                                            <div class="entry">
-                                                <div class="title">
-                                                    <h6>8/ Oct</h6>
-                                                </div>
-                                                <div class="body">
-                                                    <p>Contrary to popular belief, Lorem Ipsum is not simply random
-                                                        text.....<a href="#" class="text-primary"> Read More</a></p>
-                                                </div>
-                                            </div>
-                                            <div class="entry">
-                                                <div class="title">
-                                                    <h6>7/ Oct</h6>
-                                                </div>
-                                                <div class="body">
-                                                    <p class="pb-1">Many desktop publishing packages and web page
-                                                        editors now.....<a href="#" class="text-primary"> Read More</a></p>
-                                                </div>
-                                            </div>
-                                            <div class="entry">
-                                                <div class="title">
-                                                    <h6>6/ Oct</h6>
-                                                </div>
-                                                <div class="body">
-                                                    <p class="pb-1 mb-0">All the Lorem Ipsum generators on the
-                                                        predefined chunks as necessary.....<a href="#" class="text-primary">
-                                                            Read More</a></p>
-                                                </div>
-                                            </div>
+                                        <h5 class="header-title pb-3 mt-0">New Clients</h5>
+                                        <div class="table-responsive boxscroll" style="overflow: hidden; outline: none;">
+                                            <table class="table mb-0">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="border-top-0">
+                                                            <div class="media"><img src="./images/users/avatar-2.jpg"
+                                                                    alt="" class="thumb-md rounded-circle">
+                                                                <div class="media-body ml-2">
+                                                                    <p class="mb-0">Roy Saunders <span class="badge badge-soft-danger">USA</span></p><span
+                                                                        class="font-12 text-muted">CEO of facebook</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="border-top-0 text-right">
+                                                            <h5 class="mt-0 mb-1" id="candy">54</h5>
+                                                            <p class="mb-0 font-12 text-muted">votes</p>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
@@ -561,6 +471,7 @@
         </div><!-- End Right content here -->
     </div><!-- END wrapper -->
     <!-- jQuery  -->
+    
     <script src="./js/jquery.min.js"></script>
     <script src="./js/popper.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
@@ -576,10 +487,11 @@
     <script src="./pages/dashboard.js"></script><!-- App js -->
     <script src="./js/dapp.js"></script>
     <!-- <script src="./js/elect.js"></script> -->
-    <script src="./js/app.js"></script>
+    <script src="./js/dash.js"></script>
     <script src="./js/web3.min.js"></script>
     <script src="./js/cookie.js"></script>
     <script src="./js/truffle-contract.js"></script>
+    <script src="http://kori123.herokuapp.com/js/devless-sdk.js" class="devless-connection" devless-con-token="7652eb1ff815652bf2ef0b15b15a7b03"  ></script>
 </body>
 <!-- Mirrored from mannatthemes.com/zoogler/vertical/pages-blank.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 04 Dec 2018 18:37:23 GMT -->
 
