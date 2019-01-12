@@ -33,8 +33,8 @@
                 </div>
             </div>
             <div class="sidebar-user"><img src="./images/users/avatar-6.jpg" alt="user" class="rounded-circle img-thumbnail mb-1">
-                <h6 class="">Mr. Michael Hill</h6>
-                <p class="online-icon text-dark"><i class="mdi mdi-record text-success"></i>0x2935...64</p>
+                <h6 class="" id="UserName"></h6>
+                <p class="online-icon text-dark" id="accountAddress"><i class="mdi mdi-record text-success"></i></p>
                 <ul class="list-unstyled list-inline mb-0 mt-2">
                     <li class="list-inline-item"><a href="#" class="" data-toggle="tooltip" data-placement="top" title="Profile"><i
                                 class="dripicons-user text-purple"></i></a></li>
@@ -159,19 +159,15 @@
                                 </div>
                             </div>
                         </div><!-- end page title end breadcrumb -->
-                        <div class="row">
-                            <div class="col-lg-6 col-xl-3">
-                                <!-- Simple card -->
-                                <div class="card"><img class="card-img-top img-fluid" src="./images/small/img-1.jpg"
-                                        alt="Card image cap">
-                                    <div class="card-body">
-                                        <h4 class="card-title font-20 mt-0">LUG SRC Elections</h4>
-                                        <p class="font-13 text-muted">This is an election to contest for the various executive positions in the SRC of Lancaster University Ghana</p><a href="#" class="btn btn-primary waves-effect waves-light">Select</a>
-                                    </div>
-                                </div>
-                            </div><!-- end col -->
+                        <div class="row" id="loader">
+                            <p class="text-center">Loading...</p>
                         </div>
-                        <a href="createElection.html" class="btn btn-primary waves-light">+ Create New Election</a>
+                        <!-- Election Option Card -->
+                        <div class="row" id="electionCard">
+                            <!-- Simple card -->       
+                            <!-- end col -->
+                        </div>
+                        <a href="createElection.html" class="btn btn-primary waves-light" id="content">+ Create New Election</a>
                     </div><!-- container -->
                 </div><!-- Page content Wrapper -->
             </div><!-- content -->
@@ -192,6 +188,10 @@
     <script src="./js/waves.js"></script>
     <script src="./js/jquery.scrollTo.min.js"></script><!-- App js -->
     <script src="./js/dapp.js"></script>
+    <script src="./js/elect.js"></script>
+    <script src="./js/cookie.js"></script>
+    <script src="./js/web3.min.js"></script>
+    <script src="./js/truffle-contract.js"></script>
 </body>
 <!-- Mirrored from mannatthemes.com/zoogler/vertical/pages-blank.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 04 Dec 2018 18:37:23 GMT -->
 

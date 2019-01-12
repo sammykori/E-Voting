@@ -42,7 +42,7 @@
             </div>
             <div class="sidebar-user"><img src="./images/users/avatar-6.jpg" alt="user" class="rounded-circle img-thumbnail mb-1">
                 <h6 class="">Mr. Michael Hill</h6>
-                <p class="online-icon text-dark"><i class="mdi mdi-record text-success"></i>0x2935...64</p>
+                <p class="online-icon text-dark" id="accountAddress" ><i class="mdi mdi-record text-success"></i></p>
                 <ul class="list-unstyled list-inline mb-0 mt-2">
                     <li class="list-inline-item"><a href="#" class="" data-toggle="tooltip" data-placement="top" title="Profile"><i
                                 class="dripicons-user text-purple"></i></a></li>
@@ -174,53 +174,55 @@
                                         <h4 class="mt-0 header-title">New Election</h4>
                                         <div class="row">
                                             <div class="col-xl-12">
-                                                <div class="form-group row"><label for="example-text-input" class="col-sm-2 col-form-label">Election Name</label>
-                                                    <div class="col-sm-10"><input class="form-control" type="text"
-                                                            placeholder="LUG SRC Elections" id="example-text-input"></div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="example-text-input" class="col-sm-2 col-form-label">Election Description</label>
-                                                    <div class="col-sm-10">
-                                                        <textarea id="textarea"
-                                                        class="form-control" maxlength="225" rows="3" placeholder="This Election is to contest ..."></textarea>
+                                                <form onSubmit="App.createElection(); return false;">
+                                                    <div class="form-group row"><label for="example-text-input" class="col-sm-2 col-form-label">Election Name</label>
+                                                        <div class="col-sm-10"><input class="form-control" type="text"
+                                                                placeholder="LUG SRC Elections" id="name"></div>
                                                     </div>
-                                                </div>
-                                                <div class="form-group row"><label for="example-text-input" class="col-sm-2 col-form-label">Election Institution</label>
-                                                    <div class="col-sm-10"><input class="form-control" type="text"
-                                                            placeholder="Lancaster University Ghana" id="example-text-input"></div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="example-text-input" class="col-sm-2 col-form-label">Date Range</label>
-                                                    <div class="col-sm-10">
-                                                        <div class="input-daterange input-group" id="date-range"><input
-                                                                type="text" class="form-control" name="start"
-                                                                placeholder="Start Date"> <input type="text" class="form-control"
-                                                                name="end" placeholder="End Date"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="example-text-input" class="col-sm-2 col-form-label">Starting Time</label>
-                                                    <div class="col-sm-10">
-                                                        <div class="input-group clockpicker" data-placement="top" data-align="top"
-                                                        data-autoclose="true"><input type="text" class="form-control" value="01:35">
-                                                        <div class="input-group-append"><span class="input-group-text"><i
-                                                                class="far fa-clock"></i></span></div>
+                                                    <div class="form-group row">
+                                                        <label for="example-text-input" class="col-sm-2 col-form-label">Election Description</label>
+                                                        <div class="col-sm-10">
+                                                            <textarea id="desc"
+                                                            class="form-control" maxlength="225" rows="3" placeholder="This Election is to contest ..."></textarea>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="example-text-input" class="col-sm-2 col-form-label">Ending Time</label>
-                                                    <div class="col-sm-10">
-                                                        <div class="input-group clockpicker" data-placement="top" data-align="top"
-                                                        data-autoclose="true"><input type="text" class="form-control" value="01:35">
-                                                        <div class="input-group-append"><span class="input-group-text"><i
-                                                                class="far fa-clock"></i></span></div>
+                                                    <div class="form-group row"><label for="example-text-input" class="col-sm-2 col-form-label">Election Institution</label>
+                                                        <div class="col-sm-10"><input class="form-control" type="text"
+                                                                placeholder="Lancaster University Ghana" id="inst"></div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="example-text-input" class="col-sm-2 col-form-label">Date Range</label>
+                                                        <div class="col-sm-10">
+                                                            <div class="input-daterange input-group" id="date-range"><input id="sDate"
+                                                                    type="text" class="form-control" name="start"
+                                                                    placeholder="Start Date"> <input type="text" id="eDate" class="form-control"
+                                                                    name="end" placeholder="End Date"></div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="form-group row mb-5">
-                                                         <button type="submit" class="btn btn-primary waves-light">CREATE</button>
-                                               </div>
+                                                    <div class="form-group row">
+                                                        <label for="example-text-input" class="col-sm-2 col-form-label">Starting Time</label>
+                                                        <div class="col-sm-10">
+                                                            <div class="input-group clockpicker" data-placement="top" data-align="top"
+                                                            data-autoclose="true"><input type="text" class="form-control" value="01:35" id="sTime">
+                                                            <div class="input-group-append"><span class="input-group-text"><i
+                                                                    class="far fa-clock"></i></span></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="example-text-input" class="col-sm-2 col-form-label">Ending Time</label>
+                                                        <div class="col-sm-10">
+                                                            <div class="input-group clockpicker" data-placement="top" data-align="top"
+                                                            data-autoclose="true"><input type="text" class="form-control" value="01:35" id="eTime">
+                                                            <div class="input-group-append"><span class="input-group-text"><i
+                                                                    class="far fa-clock"></i></span></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row mb-5">
+                                                            <button type="submit" class="btn btn-primary waves-light">CREATE</button>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -260,6 +262,10 @@
     <script src="./plugins/bootstrap-touchspin/js/jquery.bootstrap-touchspin.min.js"></script><!-- Plugins Init js -->
     <script src="./pages/form-advanced.js"></script><!-- App js -->
     <script src="./js/dapp.js"></script>
+    <script src="./js/elect.js"></script>
+    <script src="./js/cookie.js"></script>
+    <script src="./js/web3.min.js"></script>
+    <script src="./js/truffle-contract.js"></script>
 </body>
 <!-- Mirrored from mannatthemes.com/zoogler/vertical/pages-blank.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 04 Dec 2018 18:37:23 GMT -->
 

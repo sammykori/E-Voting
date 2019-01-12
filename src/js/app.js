@@ -3,6 +3,7 @@ App = {
   contracts: {},
   account: '0x0',
   hasVoted: false,
+  eTag: '',
 
   init: function() {
     return App.initWeb3();
@@ -16,7 +17,7 @@ App = {
       web3 = new Web3(web3.currentProvider);
     } else {
       // Specify default instance if no web3 instance provided
-      App.web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
+      App.web3Provider = new Web3.providers.HttpProvider('http://localhost:9545');
       web3 = new Web3(App.web3Provider);
     }
     return App.initContract();
@@ -30,7 +31,6 @@ App = {
       App.contracts.Election.setProvider(App.web3Provider);
 
       // App.listenForEvents();
-      console.log("Musa Karim");
       return App.render();
       
     });
@@ -54,21 +54,28 @@ App = {
   },
 
   render: function() {
-    console.log("Great");
     var electionInstance;
     var loader = $("#loader");
     var content = $("#content");
 
     loader.show();
     content.hide();
-    console.log("Great");
     // Load account data
     web3.eth.getCoinbase(function(err, account) {
       if (err === null) {
         App.account = account;
-        $("#accountAddress").html(account);
+        var wacc = account.slice(0,7)+"..."+ account.slice(38,42);
+        $("#accountAddress").append(wacc);
       }
+      var loginDetail = Cookies.getJSON(account);
+        console.log(loginDetail);
+
+        $("#UserName").append(loginDetail.uname);
     });
+
+    //get Election name
+    App.eTag = Cookies.get("ename");
+    console.log(App.eTag);
 
     // Load contract data
     App.contracts.Election.deployed().then(function(instance) {
@@ -83,16 +90,20 @@ App = {
 
       for (var i = 1; i <= candidatesCount; i++) {
         electionInstance.candidates(i).then(function(candidate) {
-          var id = candidate[0];
-          var name = candidate[1];
-          var gender = candidate[3];
-          var Pos = candidate[4];
+          console.log(candidate[7], candidate[1])
+          if(candidate[7] == App.eTag){
+            
+            var id = candidate[0];
+            var name = candidate[1];
+            var gender = candidate[3];
+            var Pos = candidate[4];
 
-          // Render candidate Result
-          var candidateTemplate = "<tr><td>" + id + "</td><td>" + name + "</td><td>" + gender + "</td><td>" + Pos + "</td></tr>";
-          candidatesResults.append(candidateTemplate);
-          loader.hide();
-          content.show();
+            // Render candidate Result
+            var candidateTemplate = "<tr><td>" + id + "</td><td>" + name + "</td><td>" + gender + "</td><td>" + Pos + "</td></tr>";
+            candidatesResults.append(candidateTemplate);
+            loader.hide();
+            content.show();
+          }
           // Render candidate ballot option
         //   var candidateOption = "<option value='" + id + "' >" + name + "</ option>"
         //   candidatesSelect.append(candidateOption);
@@ -126,23 +137,21 @@ App = {
   },
 
   addCandidate: function() {
-    console.log("Save");
+    var eName = App.eTag;
     var name = $('#candidateName').val();
     var gender = $('#gender').val();
     var vPos = $('#vPos').val();
     var Pos = $('#Pos').val();
     var Manifesto = $('#Manifesto').val();
-    console.log(name, gender, vPos, Pos, Manifesto);
     App.contracts.Election.deployed().then(function(instance){
-      console.log("WOrking")
-      return instance.addCandidate(name, gender, vPos, Pos, Manifesto, { from: App.account });
+      return instance.addCandidate(name, gender, vPos, Pos, Manifesto, eName, { from: App.account });
     }).then(function(results){
-      console.log("sammy w")
-      console.log(results);
+      window.location.reload();
     }).catch(function(err){
       console.log(err);
     })
   }
+  
 };
 
 

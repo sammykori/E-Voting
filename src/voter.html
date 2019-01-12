@@ -35,8 +35,8 @@
                 </div>
             </div>
             <div class="sidebar-user"><img src="./images/users/avatar-6.jpg" alt="user" class="rounded-circle img-thumbnail mb-1">
-                <h6 class="">Mr. Michael Hill</h6>
-                <p class="online-icon text-dark"><i class="mdi mdi-record text-success"></i>0x2935...64</p>
+                <h6 class="" id="UserName"></h6>
+                <p class="online-icon text-dark" id="accountAddress"><i class="mdi mdi-record text-success"></i></p>
                 <ul class="list-unstyled list-inline mb-0 mt-2">
                     <li class="list-inline-item"><a href="#" class="" data-toggle="tooltip" data-placement="top" title="Profile"><i
                                 class="dripicons-user text-purple"></i></a></li>
@@ -255,7 +255,7 @@
                                                 </div>
                                                 <div class="modal-footer"><button type="button" class="btn btn-secondary waves-effect"
                                                     data-dismiss="modal">Cancel</button> <button type="button"
-                                                    class="btn btn-primary waves-effect waves-light" onclick="_onclick()">Save</button></div>
+                                                    class="btn btn-primary waves-effect waves-light" onclick="App.save()">Save</button></div>
                                             </div><!-- /.modal-content -->
                                         </div><!-- /.modal-dialog -->
                                     </div><!-- /.modal -->
@@ -272,18 +272,12 @@
                                             <thead>
                                                 <tr>
                                                     <th>No</th>
-                                                    <th>Firstname</th>
-                                                    <th>Lastname</th>
-                                                    <th>Email</th>
+                                                    <th>Name</th>
+                                                    <th>Student ID</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>John</td>
-                                                    <td>Doe</td>
-                                                    <td>john@example.com</td>
-                                                </tr>
+                                            <tbody id="voterResults">
+                                                
                                             </tbody>
                                         </table>
                                     </div>
@@ -299,33 +293,7 @@
         </div><!-- End Right content here -->
     </div><!-- END wrapper -->
     <!-- jQuery  -->
-    <script>
-        var rABS = true; // true: readAsBinaryString ; false: readAsArrayBuffer
-        const inputElement = document.getElementById("inputf");
-        inputElement.addEventListener('change', function(e){
-            const file = inputElement.files[0];
-            console.log(file);
-            const reader = new FileReader();
-            reader.onload = function(){
-                console.log(reader.result)
-                var data = reader.result;
-                if(!rABS) data = new Uint8Array(data);
-                var workbook = XLSX.read(data, {type: rABS ? 'binary' : 'array'});
-
-                /* DO SOMETHING WITH workbook HERE */
-                var first_sheet_name = workbook.SheetNames[0];
-
-                /* Get worksheet */
-                var worksheet = workbook.Sheets[first_sheet_name];
-                console.log(XLSX.utils.sheet_to_json(worksheet));
-            }
-            if(rABS) reader.readAsBinaryString(file); else reader.readAsArrayBuffer(file);
-        }, false);
-        
-        function _onclick(){
-            console.log("Sammy Kori");
-        }
-    </script>
+    
     <script src="./js/jquery.min.js"></script>
     <script src="./js/popper.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
@@ -340,8 +308,12 @@
     <script src="./plugins/dropify/js/dropify.min.js"></script>
     <script src="./pages/dropify.init.js"></script><!-- App js -->
     <script src="./js/xlsx.full.min.js"></script>
+    <script src="./js/cookie.js"></script>
+    
     <script src="./js/dapp.js"></script>
+    <script src="http://kori123.herokuapp.com/js/devless-sdk.js" class="devless-connection" devless-con-token="7652eb1ff815652bf2ef0b15b15a7b03"  ></script>
+    <script src="./js/voterfile.js"></script>
 </body>
 <!-- Mirrored from mannatthemes.com/zoogler/vertical/pages-blank.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 04 Dec 2018 18:37:23 GMT -->
 
-</html>.
+</html>
