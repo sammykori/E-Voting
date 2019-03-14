@@ -5,6 +5,8 @@ App = {
     hasVoted: false,
     eTag: '',
     name: '',
+    pos: '',
+    ballot: 0,
   
     init: function() {
       return App.initWeb3();
@@ -18,7 +20,7 @@ App = {
         web3 = new Web3(web3.currentProvider);
       } else {
         // Specify default instance if no web3 instance provided
-        App.web3Provider = new Web3.providers.HttpProvider('http://localhost:9545');
+        App.web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
         web3 = new Web3(App.web3Provider);
       }
       return App.initContract();
@@ -93,12 +95,13 @@ App = {
         for (var i = 1; i <= candidatesCount; i++) {
           electionInstance.candidates(i).then(function(candidate) {
             console.log(candidate[7], candidate[1])
-            if(candidate[7] == App.eTag){
+            if(candidate[7] == App.eTag && candidate[2] == 'President'){
               
               var id = candidate[0];
               var name = candidate[1];
               App.name = name;
               var pos = candidate[4];
+              App.pos = pos;
               var manifesto = candidate[5];
               // Render candidate Result
               var candidateTemplate = "<tr><td class='border-top-0'><div class='candid'>"+id+"</div><div class='media'><img src='./images/users/avatar-2.jpg' alt='' class='thumb-md rounded-circle'><div class='media-body ml-2'><p class='mb-0'>"+ name +"<span class='badge badge-soft-danger'>"+pos+"</span></p><span class='font-12 text-muted'>"+manifesto+"</span></div></div></td><td class='border-top-0 text-right'><button class='votebtn btn btn-light btn-sm' onclick='App.castVote()'><i class='far fa-thumbs-up mr-2 text-success'></i>Vote</button></td></tr>";
@@ -130,7 +133,7 @@ App = {
     castVote: function() {
       var candidateId = $('.candid').html();
       App.contracts.Election.deployed().then(function(instance) {
-        return instance.vote(candidateId, { from: App.account });
+        return instance.vote(candidateId, App.pos, { from: App.account });
       }).then(function(result) {
         // Wait for votes to update
        console.log("Voted Succesfully")
@@ -141,9 +144,51 @@ App = {
         button: "Great!",
        })
        $('.votebtn').hide();
-       window.location = "voterview.html";
+       App.ballot++;
+       App.refresh(App.ballot);
       }).catch(function(err) {
         console.error(err);
+      });
+    },
+
+    refresh: function(ballot){
+       // Load contract data
+       var ballotPos = ["President", "Vice President", "Finance Officer", "Communications Officer", "Academics Officer", "International Students Officer", "Welfare Officer"];
+       App.contracts.Election.deployed().then(function(instance) {
+        electionInstance = instance;
+        return electionInstance.candidatesCount();
+      }).then(function(candidatesCount) {
+        var candidatesResults = $("#candidatesBallot");
+        candidatesResults.empty();
+  
+      //   var candidatesSelect = $('#candidatesSelect');
+      //   candidatesSelect.empty();
+  
+        for (var i = 1; i <= candidatesCount; i++) {
+          electionInstance.candidates(i).then(function(candidate) {
+            console.log(candidate[7], candidate[1])
+            if(candidate[7] == App.eTag && candidate[2] == ballotPos[ballot]){
+              
+              var id = candidate[0];
+              var name = candidate[1];
+              App.name = name;
+              var pos = candidate[4];
+              App.pos = pos;
+              var manifesto = candidate[5];
+              // Render candidate Result
+              var candidateTemplate = "<tr><td class='border-top-0'><div class='candid'>"+id+"</div><div class='media'><img src='./images/users/avatar-2.jpg' alt='' class='thumb-md rounded-circle'><div class='media-body ml-2'><p class='mb-0'>"+ name +"<span class='badge badge-soft-danger'>"+pos+"</span></p><span class='font-12 text-muted'>"+manifesto+"</span></div></div></td><td class='border-top-0 text-right'><button class='votebtn btn btn-light btn-sm' onclick='App.castVote()'><i class='far fa-thumbs-up mr-2 text-success'></i>Vote</button></td></tr>";
+              candidatesResults.append(candidateTemplate);
+              var cand = $('.candid');
+              cand.hide();
+              loader.hide();
+              content.show();
+            }
+            // Render candidate ballot option
+          //   var candidateOption = "<option value='" + id + "' >" + name + "</ option>"
+          //   candidatesSelect.append(candidateOption);
+          });
+        }
+        // return electionInstance.voters(App.account);
       });
     }
     

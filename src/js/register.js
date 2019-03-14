@@ -16,7 +16,7 @@ App = {
         web3 = new Web3(web3.currentProvider);
       } else {
         // Specify default instance if no web3 instance provided
-        App.web3Provider = new Web3.providers.HttpProvider('http://localhost:9545');
+        App.web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
         web3 = new Web3(App.web3Provider);
       }
       return App.initContract();
@@ -62,7 +62,7 @@ App = {
       web3.eth.getCoinbase(function(err, account) {
         if (err === null) {
           App.account = account;
-          var wacc = account.slice(0,7)+"..."+ account.slice(38,42);
+          var wacc = account;
           $("#accountAddress").append(wacc);
         }
       });

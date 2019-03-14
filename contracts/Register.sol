@@ -1,4 +1,4 @@
-pragma solidity ^0.4.22;
+pragma solidity >=0.4.22 <0.6.0;
 
 contract Register {
   struct Admin{
@@ -12,7 +12,7 @@ contract Register {
   mapping(address => Admin) public admins;
   mapping(address => bool) public logins;
   
-  address[] adminAccounts;
+  address[] public adminAccounts;
 
   uint public adminCount;
 

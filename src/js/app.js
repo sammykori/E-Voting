@@ -17,7 +17,7 @@ App = {
       web3 = new Web3(web3.currentProvider);
     } else {
       // Specify default instance if no web3 instance provided
-      App.web3Provider = new Web3.providers.HttpProvider('http://localhost:9545');
+      App.web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
       web3 = new Web3(App.web3Provider);
     }
     return App.initContract();
@@ -144,7 +144,7 @@ App = {
     var Pos = $('#Pos').val();
     var Manifesto = $('#Manifesto').val();
     App.contracts.Election.deployed().then(function(instance){
-      return instance.addCandidate(name, gender, vPos, Pos, Manifesto, eName, { from: App.account });
+      return instance.addCandidate(name, vPos, gender, Pos, Manifesto, eName, { from: App.account });
     }).then(function(results){
       window.location.reload();
     }).catch(function(err){
